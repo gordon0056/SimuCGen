@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<System>
+  <!-- Inports -->
+  <Block Name="in1" SID="1" BlockType="Inport">
+    <P Name="Port">1</P>
+  </Block>
+  <Block Name="in2" SID="2" BlockType="Inport">
+    <P Name="Port">1</P>
+  </Block>
+
+  <!-- Sum: sum1 = in1 + in2 -->
+  <Block Name="sum1" SID="3" BlockType="Sum">
+    <P Name="Inputs">++</P>
+  </Block>
+
+  <!-- Gain: g1 = sum1 * 2 -->
+  <Block Name="g1" SID="4" BlockType="Gain">
+    <P Name="Gain">2</P>
+  </Block>
+
+  <!-- Gain: g2 = sum1 * 0.5 -->
+  <Block Name="g2" SID="5" BlockType="Gain">
+    <P Name="Gain">0.5</P>
+  </Block>
+
+  <!-- Sum: sum2 = g1 - g2 -->
+  <Block Name="sum2" SID="6" BlockType="Sum">
+    <P Name="Inputs">+-</P>
+  </Block>
+
+  <!-- UnitDelay: delay1 stores sum2 -->
+  <Block Name="delay1" SID="7" BlockType="UnitDelay">
+    <P Name="SampleTime">0.01</P>
+  </Block>
+
+  <!-- Sum: sum3 = sum2 + delay1 -->
+  <Block Name="sum3" SID="8" BlockType="Sum">
+    <P Name="Inputs">++</P>
+  </Block>
+
+  <!-- Outport -->
+  <Block Name="out" SID="9" BlockType="Outport">
+    <P Name="Port">1</P>
+  </Block>
+
+  <!-- Connections -->
+  <Line Name="in1Line">
+    <Src>1#R:1</Src>
+    <P Name="Dst">3#L:1</P>
+  </Line>
+  <Line Name="in2Line">
+    <Src>2#R:1</Src>
+    <P Name="Dst">3#L:2</P>
+  </Line>
+  <Line Name="sum1Line">
+    <Src>3#R:1</Src>
+    <P Name="Dst">4#L:1</P>
+    <Branch>
+      <P Name="Dst">5#L:1</P>
+    </Branch>
+  </Line>
+  <Line Name="g1Line">
+    <Src>4#R:1</Src>
+    <P Name="Dst">6#L:1</P>
+  </Line>
+  <Line Name="g2Line">
+    <Src>5#R:1</Src>
+    <P Name="Dst">6#L:2</P>
+  </Line>
+  <Line Name="sum2Line">
+    <Src>6#R:1</Src>
+    <P Name="Dst">7#L:1</P>
+    <Branch>
+      <P Name="Dst">8#L:1</P>
+    </Branch>
+  </Line>
+  <Line Name="delayLine">
+    <Src>7#R:1</Src>
+    <P Name="Dst">8#L:2</P>
+  </Line>
+  <Line Name="sum3Line">
+    <Src>8#R:1</Src>
+    <P Name="Dst">9#L:1</P>
+  </Line>
+</System>

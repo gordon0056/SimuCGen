@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<System>
+  <Block Name="Ref" SID="1" BlockType="Inport">
+    <P Name="Port">1</P>
+  </Block>
+  <Block Name="Feedback" SID="2" BlockType="Inport">
+    <P Name="Port">1</P>
+  </Block>
+  <Block Name="SumError" SID="3" BlockType="Sum">
+    <P Name="Inputs">+-</P>
+  </Block>
+  <Block Name="Kp" SID="4" BlockType="Gain">
+    <P Name="Gain">2.5</P>
+  </Block>
+  <Block Name="Output" SID="5" BlockType="Outport">
+    <P Name="Port">1</P>
+  </Block>
+  <Line Name="refLine">
+    <Src>1#R:1</Src>
+    <P Name="Dst">3#L:1</P>
+  </Line>
+  <Line Name="fbLine">
+    <Src>2#R:1</Src>
+    <P Name="Dst">3#L:2</P>
+  </Line>
+  <Line Name="errLine">
+    <Src>3#R:1</Src>
+    <P Name="Dst">4#L:1</P>
+  </Line>
+  <Line Name="outLine">
+    <Src>4#R:1</Src>
+    <P Name="Dst">5#L:1</P>
+  </Line>
+</System>

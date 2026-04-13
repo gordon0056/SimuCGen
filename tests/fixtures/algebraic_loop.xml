@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<System>
+  <Block Name="A" SID="10" BlockType="Sum">
+    <P Name="Inputs">++</P>
+  </Block>
+  <Block Name="B" SID="20" BlockType="Sum">
+    <P Name="Inputs">+-</P>
+  </Block>
+  <Block Name="C" SID="30" BlockType="Sum">
+    <P Name="Inputs">+-</P>
+  </Block>
+  <Line Name="AtoB">
+    <Src>10#R:1</Src>
+    <P Name="Dst">20#L:1</P>
+  </Line>
+  <Line Name="BtoC">
+    <Src>20#R:1</Src>
+    <P Name="Dst">30#L:1</P>
+  </Line>
+  <Line Name="CtoA">
+    <Src>30#R:1</Src>
+    <P Name="Dst">10#L:1</P>
+  </Line>
+</System>

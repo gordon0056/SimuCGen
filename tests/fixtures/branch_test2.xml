@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<System>
+  <!-- Inport -->
+  <Block Name="input" SID="1" BlockType="Inport">
+    <P Name="Port">1</P>
+  </Block>
+
+  <!-- Gain: Gain1 = input * 5 -->
+  <Block Name="Gain1" SID="2" BlockType="Gain">
+    <P Name="Gain">5</P>
+  </Block>
+
+  <!-- Outports -->
+  <Block Name="out1" SID="3" BlockType="Outport">
+    <P Name="Port">1</P>
+  </Block>
+  <Block Name="out2" SID="4" BlockType="Outport">
+    <P Name="Port">2</P>
+  </Block>
+  <Block Name="out3" SID="5" BlockType="Outport">
+    <P Name="Port">3</P>
+  </Block>
+
+  <!-- Connections: input -> Gain1, then Gain1 branches to 3 outports -->
+  <Line Name="inLine">
+    <Src>1#R:1</Src>
+    <P Name="Dst">2#L:1</P>
+  </Line>
+  <Line Name="gainLine">
+    <Src>2#R:1</Src>
+    <P Name="Dst">3#L:1</P>
+    <Branch>
+      <P Name="Dst">4#L:1</P>
+      <Branch>
+        <P Name="Dst">5#L:1</P>
+      </Branch>
+    </Branch>
+  </Line>
+</System>

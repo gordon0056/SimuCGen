@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Configure CMake
+      run: cmake -B build -DCMAKE_BUILD_TYPE=Release
+
+    - name: Build
+      run: cmake --build build --config Release --parallel
+
+    - name: Run tests
+      working-directory: build
+      run: ctest -C Release --output-on-failure --verbose
+
+    - name: Upload build artifacts
+      if: matrix.os == 'ubuntu-latest'
+      uses: actions/upload-artifact@v4
+      with:
+        name: dsl-codegen-linux
+        path: build/dsl-codegen
+        retention-days: 7
+
+    - name: Upload build artifacts (Windows)
+      if: matrix.os == 'windows-latest'
+      uses: actions/upload-artifact@v4
+      with:
+        name: dsl-codegen-windows
+        path: |
+          build/Release/dsl-codegen.exe
+          build/Release/*.dll
+        retention-days: 7

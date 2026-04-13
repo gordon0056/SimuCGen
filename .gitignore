@@ -1,0 +1,15 @@
+# C++ build artifacts
+build/
+bin/
+obj/
+out/
+*.o
+*.obj
+*.exe
+*.dll
+*.lib
+*.pdb
+*.ilk
+*.tlog
+*.lastbuildstate
+*.deps

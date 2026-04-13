@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<System>
+  <Block Name="Src" SID="1" BlockType="Inport">
+    <P Name="Port">1</P>
+  </Block>
+  <Block Name="Dst1" SID="2" BlockType="Outport">
+    <P Name="Port">1</P>
+  </Block>
+  <Block Name="Dst2" SID="3" BlockType="Outport">
+    <P Name="Port">1</P>
+  </Block>
+  <Block Name="Dst3" SID="4" BlockType="Outport">
+    <P Name="Port">1</P>
+  </Block>
+  <Line Name="mainLine">
+    <Src>1#R:1</Src>
+    <P Name="Dst">2#L:1</P>
+    <Branch>
+      <P Name="Dst">3#L:1</P>
+      <Branch>
+        <P Name="Dst">4#L:1</P>
+      </Branch>
+    </Branch>
+  </Line>
+</System>

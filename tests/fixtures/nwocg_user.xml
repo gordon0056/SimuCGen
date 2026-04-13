@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<System>
+  <Block Name="setpoint" SID="1" BlockType="Inport">
+    <P Name="Port">1</P>
+  </Block>
+  <Block Name="feedback" SID="2" BlockType="Inport">
+    <P Name="Port">1</P>
+  </Block>
+  <Block Name="Add1" SID="3" BlockType="Sum">
+    <P Name="Inputs">+-</P>
+  </Block>
+  <Block Name="P_gain" SID="4" BlockType="Gain">
+    <P Name="Gain">3</P>
+  </Block>
+  <Block Name="I_gain" SID="5" BlockType="Gain">
+    <P Name="Gain">2</P>
+  </Block>
+  <Block Name="Ts" SID="6" BlockType="Gain">
+    <P Name="Gain">0.01</P>
+  </Block>
+  <Block Name="UnitDelay1" SID="7" BlockType="UnitDelay">
+    <P Name="SampleTime">0.01</P>
+  </Block>
+  <Block Name="Add2" SID="8" BlockType="Sum">
+    <P Name="Inputs">++</P>
+  </Block>
+  <Block Name="Add3" SID="9" BlockType="Sum">
+    <P Name="Inputs">++</P>
+  </Block>
+  <Block Name="command" SID="10" BlockType="Outport">
+    <P Name="Port">1</P>
+  </Block>
+
+  <Line>
+    <Src>1#R:1</Src>
+    <P Name="Dst">3#L:1</P>
+  </Line>
+  <Line>
+    <Src>2#R:1</Src>
+    <P Name="Dst">3#L:2</P>
+  </Line>
+  <Line>
+    <Src>3#R:1</Src>
+    <P Name="Dst">4#L:1</P>
+    <Branch>
+      <P Name="Dst">5#L:1</P>
+    </Branch>
+  </Line>
+  <Line>
+    <Src>4#R:1</Src>
+    <P Name="Dst">9#L:1</P>
+  </Line>
+  <Line>
+    <Src>5#R:1</Src>
+    <P Name="Dst">6#L:1</P>
+  </Line>
+  <Line>
+    <Src>6#R:1</Src>
+    <P Name="Dst">8#L:1</P>
+  </Line>
+  <Line>
+    <Src>7#R:1</Src>
+    <P Name="Dst">8#L:2</P>
+  </Line>
+  <Line>
+    <Src>8#R:1</Src>
+    <P Name="Dst">7#L:1</P>
+    <Branch>
+      <P Name="Dst">9#L:2</P>
+    </Branch>
+  </Line>
+  <Line>
+    <Src>9#R:1</Src>
+    <P Name="Dst">10#L:1</P>
+  </Line>
+</System>
