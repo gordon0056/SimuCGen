@@ -1,6 +1,6 @@
 # DSL CodeGen
 
-[![CI](https://github.com/gordon0056/DSLCodeGen/actions/workflows/ci.yml/badge.svg)](https://github.com/gordon0056/DSLCodeGen/actions/workflows/ci.yml)
+[![CI](https://github.com/gordon0056/SimuCGen/actions/workflows/ci.yml/badge.svg)](https://github.com/gordon0056/SimuCGen/actions/workflows/ci.yml)
 
 Read in: [English](#-english) | [Русский](#-русский)
 
